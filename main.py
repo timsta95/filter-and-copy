@@ -1,9 +1,9 @@
 import os, shutil
 
-ROOT = r'W:\O10209\10209127-01\10209127-01-03 ARBEIDSOMRÅDE\4_Rentvann\41_Grunnlagsmodell\Bergmodell'
-TARGET = r'C:\Users\tims\OneDrive - Multiconsult\Dela\VAV\file-transfer\gm'
-MATCH = ['-GM-', ]
-FILE_EXT = 'dwg'
+ROOT = input('Root directory: ')
+TARGET = input('Target directory: ')
+MATCH = input('Match patterns: ').split()
+FILE_EXT = input('File extension: ')
 
 def find_matching_files(root, *strings, extension=''):
     files = []

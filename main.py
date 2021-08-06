@@ -14,9 +14,14 @@ def validate_dir(msg, compare = None):
 
 def find_matching_files(root, strings, extensions):
     files = []
+    if not strings:
+        strings = ('',)
+    if not extensions:
+        extensions = ('',)
     for file in os.listdir(root):
         if any(x in file for x in strings) and any(file.endswith(ext) for ext in extensions):
-            files.append(file)
+            if os.path.isfile(os.path.join(root, file)):
+                files.append(file)
     print(f'Number of files found: {len(files)}')
     return files
 

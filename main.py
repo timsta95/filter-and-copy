@@ -1,10 +1,13 @@
 import os, shutil, sys
 
-def validate_dir(msg):
+def validate_dir(msg, compare = None):
     while True:
         input_dir = input(msg)
         if not os.path.exists(input_dir):
-            print('This path does not exist, please try again.')
+            print('This path does not exist, please try again')
+            continue
+        if input_dir == compare:
+            print('Target directory equal to source directory, please try again')
             continue
         break
     return input_dir
@@ -41,10 +44,9 @@ def search_new_pattern():
         else:
             sys.stdout.write('Please respond with \'yes\' or \'no\'\n' )
         
-
 def main():
     root = validate_dir('Root directory: ')
-    target = validate_dir('Target directory: ')
+    target = validate_dir('Target directory: ', compare = root)
     while True:
         match = input('Match pattern(s): ').split()
         file_ext = input('File extension(s): ').split()
